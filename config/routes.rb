@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  root 'welcome#home'
+
   resources :fields
   resources :comments
   resources :events
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations"}
 
-  root 'welcome#home'
+  resources :events do 
+    resources :comments
+  end
+  resources :users
+
+  
 end
