@@ -1,1 +1,9 @@
-<h1>Welcome <%= @user.username %>!</h1>
+<h1><%= @user.username.capitalize %>'s Profile!</h1>
+
+<li>Name: <%= @user.full_name %></li>
+
+<% if @user == current_user %>
+	<%= link_to "Edit Profile", edit_user_registration_path %>
+<% end %>
+<br>
+<%= link_to "Back to Members Index", users_path %>

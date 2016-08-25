@@ -8,4 +8,11 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, length: {minimum: 3}
   validates :username, uniqueness: true
+
+  enum role: [:user, :admin]
+
+  def full_name
+  	self.first_name + " " + self.last_name
+  end
+
 end

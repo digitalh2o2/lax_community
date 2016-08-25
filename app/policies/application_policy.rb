@@ -50,4 +50,16 @@ class ApplicationPolicy
       scope
     end
   end
+
+  private
+
+  def is_admin?
+    user.admin? unless !user
+  end
+
+  def is_admin_or_user?
+    user || user.admin? unless !user
+  end
+
+
 end
