@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'welcome#home'
-
+  root to: 'welcome#home'
+  
   resources :fields
   resources :comments
   resources :events
