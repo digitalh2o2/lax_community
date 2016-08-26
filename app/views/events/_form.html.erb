@@ -1,9 +1,27 @@
 <%= form_for @event do |f| %>
-	<p><%= f.label :name %></p>
+	<p><%= f.label :name, 'Event Name' %></p>
 	<%= f.text_field :name %>
 
 	<p><%= f.label :description %></p>
 	<%= f.text_area :description %>
 	<br>
+
+	<%= f.fields_for :fields do |field_builder| %>
+		<br>
+		<p>Enter Field Information</p>
+		<p><%= field_builder.label :name, 'Field Name' %></p>
+		<p><%= field_builder.text_field :name %></p>
+
+		<p><%= field_builder.label :address, 'Field Location' %></p>
+		<p><%= field_builder.text_area :address %></p>
+
+		<p><%= field_builder.label :city %></p>
+		<p><%= field_builder.text_field :city %></p>
+
+		<p><%= field_builder.label :state %></p>
+		<p><%= field_builder.text_field :state %></p>
+
+	<% end %>
+
 	<%= f.submit %>
 <% end %>

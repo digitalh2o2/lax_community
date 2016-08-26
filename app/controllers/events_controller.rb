@@ -13,11 +13,11 @@ class EventsController < ApplicationController
 
 	def new
 		@event = Event.new
-
+		@event.fields.build(event_id: @event.id)
 	end
 
 	def create
-		@event = Event.new(event_params)
+		@event = Event.new(event_params)		
 		if @event.valid?
 			@event.user_id = current_user.id
 			@event.save
@@ -28,15 +28,19 @@ class EventsController < ApplicationController
 		end
 	end
 
-	def show		
+	def show	
+
 	end
 
 	def edit
 	end
 
 	def update
-		@event.update(event_params)
-		redirect_to event_path(@event)
+		if @event.update(event_params)
+		  redirect_to event_path(@event)
+		else
+			render :edit
+		end
 	end
 
 	def destroy
@@ -51,6 +55,6 @@ class EventsController < ApplicationController
 	end
 
 	def event_params
-		params.require(:event).permit(:name, :description, :user_id)
+		params.require(:event).permit(:name, :description, :user_id, fields_attributes: [:id, :name, :address, :city, :state])
 	end
 end

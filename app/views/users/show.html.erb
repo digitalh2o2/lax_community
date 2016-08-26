@@ -2,8 +2,6 @@
 
 <li>Full Name: <%= @user.full_name %></li>
 
-<!--NEED TO INSERT EVENT AND COMMENT DATA -->
-
 <% if @user == current_user %>
 	<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
 	<li><%= link_to "Create a New Event", new_event_path %></li>

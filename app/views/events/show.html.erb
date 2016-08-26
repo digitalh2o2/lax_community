@@ -1,12 +1,16 @@
-<h1><%= @event.name%>'s Information</h1>
+<h1><%= @event.name %>'s Information</h1>
 
-<ul>
-	<li><%= @event.description %></li>
-	<br>	
-	<p>View Comments for this event.</p>
-	<%= link_to 'Comments', event_comments_path(@event) %>
-</ul>
 
+<h3>Event Description:</h3>
+<p><%= @event.description %></p>
+
+<%= render 'fields' %>
+<br>	
+
+<p>View Comments for this event.</p>
+<%= link_to 'Comments', event_comments_path(@event) %><br>
+
+<br>
 <% if @event.user_id == current_user.id %>
 	<p><%= link_to "Edit Event", edit_event_path(@event) %></p>
 	
