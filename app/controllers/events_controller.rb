@@ -1,19 +1,26 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_current_event, only: [:show]
+	before_action :set_current_event, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@events = Event.all
-		authorize User
+		if !user_signed_in?
+			flash[:alert] = "You must sign in to view the Events"
+			redirect_to new_user_session_path 
+		else
+			@events = Event.all
+		end
 	end
 
 	def new
 		@event = Event.new
+
 	end
 
 	def create
-		@event = Event.create(event_params)
-		if @event.save
+		@event = Event.new(event_params)
+		if @event.valid?
+			@event.user_id = current_user.id
+			@event.save
 			redirect_to events_path
 		else
 			flash[:alert] = "Description too short!"
@@ -21,8 +28,20 @@ class EventsController < ApplicationController
 		end
 	end
 
-	def show
+	def show		
+	end
 
+	def edit
+	end
+
+	def update
+		@event.update(event_params)
+		redirect_to event_path(@event)
+	end
+
+	def destroy
+		@event.destroy
+		redirect_to events_path
 	end
 
 	private
@@ -32,6 +51,6 @@ class EventsController < ApplicationController
 	end
 
 	def event_params
-		params.require(:event).permit(:name, :description)
+		params.require(:event).permit(:name, :description, :user_id)
 	end
 end

@@ -1,7 +1,8 @@
 <li><%= link_to "LAX Community", root_path %></li>
 <% if user_signed_in? %>
 <li><%= link_to "Your Profile", user_path(current_user) %></li>
-<li><%= link_to "Post New Event", new_event_path %></li>
+<li><%= link_to "View Events", events_path %></li>
+<li><%= link_to "Create New Event", new_event_path %></li>
 <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 
 <% else %>
