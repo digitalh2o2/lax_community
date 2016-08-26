@@ -1,0 +1,10 @@
+<h1>Comments from the Community</h1>
+
+<ul>
+	<% @event.comments.each do |comment| %>
+	<li><%= link_to comment.content, comment_path(comment) %></li>
+	<% end %>
+
+	<p>Create new comment?</p>
+	<%= link_to "New Comment", new_event_comment_path(@event) %>
+</ul>

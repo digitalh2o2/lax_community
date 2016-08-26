@@ -1,0 +1,9 @@
+<h3>Add a comment to <%= @event.name %></h3>
+
+<%= form_for([@event, @event.comments.build]) do |f| %>
+	<%= f.label :content %>
+	<br>
+	<p><%= f.text_area :content %></p>
+	<br>
+	<%= f.submit %>
+<% end %>
