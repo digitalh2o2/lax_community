@@ -1,6 +1,10 @@
-<h1>Here is the LAX Community!</h1>
-<ul>
-	<% @users.each do |user| %>
-	<li>Profile for: <%= link_to user.full_name.capitalize, user_path(user) %></li>
-	<% end %>
-</ul>
+<div class="containter">
+  <div class="col-md-4">
+	<h1>Here is the LAX Community!</h1>
+	<ul>
+		<% @users.each do |user| %>
+		<li>Profile for: <%= link_to user.full_name.capitalize, user_path(user) %></li>
+		<% end %>
+	</ul>
+  </div>
+</div>

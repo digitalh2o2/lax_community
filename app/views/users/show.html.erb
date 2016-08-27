@@ -1,10 +1,14 @@
-<h1><%= @user.full_name %>'s Profile!</h1>
+<div class="containter">
+  <div class="col-md-4">
+	<h1><%= @user.full_name %>'s Profile!</h1>
 
-<li>Full Name: <%= @user.full_name %></li>
+	<li>Full Name: <%= @user.full_name %></li>
 
-<% if @user == current_user %>
-	<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-	<li><%= link_to "Create a New Event", new_event_path %></li>
-<% end %>
-<br>
-<%= link_to "Back to Members Index", users_path %>
+	<% if @user == current_user %>
+		<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+		<li><%= link_to "Create a New Event", new_event_path %></li>
+	<% end %>
+	<br>
+	<%= link_to "Back to Members Index", users_path %>
+  </div>
+</dvi>

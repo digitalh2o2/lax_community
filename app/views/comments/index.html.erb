@@ -1,12 +1,16 @@
-<h1>Comments for <%= @event.name %></h1>
+<div class="containter">
+  <div class="col-md-4">
+	<h1>Comments for <%= @event.name %></h1>
 
-<ul>
-	<% @event.comments.each do |comment| %>
-	<li><%= link_to comment.content, comment_path(comment) %></li>
-	<% end %>
-</ul>
-	<h4>Create new comment?</h4>
-	<p><%= link_to "New Comment", new_event_comment_path(@event) %></p>
+	<ul>
+		<% @event.comments.each do |comment| %>
+		<li><%= link_to comment.content, comment_path(comment) %></li>
+		<% end %>
+	</ul>
+		<h4>Create new comment?</h4>
+		<p><%= link_to "New Comment", new_event_comment_path(@event) %></p>
 
-<br>
-<p><%= link_to "Back", event_path(@event) %></p>
+	<br>
+	<p><%= link_to "Back", event_path(@event) %></p>
+  </div>
+</div>

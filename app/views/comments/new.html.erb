@@ -1,9 +1,13 @@
-<h3>Add a comment to <%= @event.name %></h3>
+<div class="containter">
+  <div class="col-md-4">
+	<h3>Add a comment to <%= @event.name %></h3>
 
-<%= form_for([@event, @event.comments.build]) do |f| %>
-	<%= f.label :content %>
-	<br>
-	<p><%= f.text_area :content %></p>
-	<br>
-	<%= f.submit %>
-<% end %>
+	<%= form_for([@event, @event.comments.build]) do |f| %>
+		<%= f.label :content %>
+		<br>
+		<p><%= f.text_area :content %></p>
+		<br>
+		<%= f.submit %>
+	<% end %>
+	</div>
+</div>
