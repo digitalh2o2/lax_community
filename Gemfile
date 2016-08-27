@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
-#App_id failure for Omniauth
+#ENV for Omniauth
 gem 'figaro'
+
+#Boostrap for Rails
+gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
