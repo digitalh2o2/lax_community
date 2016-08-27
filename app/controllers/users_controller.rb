@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_current_user, only: [:show] 
+	before_action :authenticate_user!
 	
 	rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
