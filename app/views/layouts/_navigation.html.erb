@@ -15,17 +15,17 @@
         	<li><a href="/users/sign_up">Sign Up</a></li>
         <% else %>
         	<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        	<li><%= link_to "Members", users_path %></li>
         <% end %>
         <li class="dropdown">
         <% if user_signed_in? %>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>          
           <ul class="dropdown-menu">          	
-            <li><a href="#"><%= link_to "Your Profile", user_path(current_user) %></a></li>
-            <li><a href="#"><%= link_to "Create New Event", new_event_path %></a></li>
+            <li><%= link_to "Your Profile", user_path(current_user) %></li>
+            <li><%= link_to "Create New Event", new_event_path %></li>
             <li><%= link_to "View Events", events_path %></li>            
-            <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="#">Hello</a></li>
           </ul>
           <% end %>
         </li>
