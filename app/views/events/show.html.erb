@@ -6,7 +6,10 @@
 	<h3>Event Description:</h3>
 	<p><%= @event.description %></p>
 
-	<%= render 'fields' %>
+	<br>
+	Field Information Below If Event at Field:
+
+	<%= render 'fields', locals: { field: @event.fields } unless @event.fields.blank? || @event.fields.nil? %>
 	<br>	
 
 	<p>View Comments for this event.</p>
