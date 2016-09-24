@@ -1,12 +1,21 @@
 class CommentsController < ApplicationController
-	before_action :set_current_comment, only: [:show, :edit, :update, :destroy]
+	before_action :set_current_comment, only: [:edit, :update, :destroy]
 
 	def index
 		@event = Event.find(params[:event_id])
 		@comments = Comment.all
+		respond_to do |format|
+			format.html {render :index}
+			format.json {render json: @comments}
+		end
 	end
 
 	def show
+		@comment = Comment.find(params[:id])
+		respond_to do |format|
+			format.html {render :show}
+			format.json {render json: @comment}
+		end
 	end
 
 	def new
