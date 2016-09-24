@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 		@event = Event.find(params[:event_id])
 		@comment = create_comment
 		redirect_to event_comments_path(@event)
-	end	
+	end
 
 	def update
 	end
@@ -38,5 +38,5 @@ class CommentsController < ApplicationController
 
 	def comment_params
 		params.require(:comment).permit(:content, :user_id, :event_id)
-	end 
+	end
 end

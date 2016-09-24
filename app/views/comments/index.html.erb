@@ -2,11 +2,11 @@
   <div class="col-md-4">
 	<h1>Comments for <%= @event.name %></h1>
 
-	<ul>
+	<div class="comments">
 		<% @event.comments.each do |comment| %>
-		<li><%= link_to comment.content, comment_path(comment) %></li>
+		<li>Someone said: <%= link_to comment.content, comment_path(comment) %></li>
 		<% end %>
-	</ul>
+	</div>
 		<h4>Create new comment?</h4>
 		<p><%= link_to "New Comment", new_event_comment_path(@event) %></p>
 
