@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_current_event, only: [:show, :edit, :update, :destroy]
+	before_action :set_current_event, only: [:edit, :update, :destroy]
 
 	def index
 		if !user_signed_in?
 			flash[:alert] = "You must sign in to view the Events"
-			redirect_to new_user_session_path 
+			redirect_to new_user_session_path
 		else
 			@events = Event.all
 		end
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(event_params)		
+		@event = Event.new(event_params)
 		if @event.valid?
 			@event.user_id = current_user.id
 			@event.save
@@ -28,7 +28,12 @@ class EventsController < ApplicationController
 		end
 	end
 
-	def show	
+	def show
+		@event = Event.find(params[:id])
+		respond_to do |format|
+			format.html {render :show}
+			format.json {render json: @event}
+		end
 	end
 
 	def edit
