@@ -25,3 +25,30 @@
 
 	<%= f.submit %>
 <% end %>
+
+<div id="newEvent">
+	<h1 id="eventName"></h1>
+	<h3 id="eventDescription"></h3>
+	<h2 id="fieldName"></h2>
+	<h3 id="fieldAddress"></h3>
+	<h3 id="fieldCity"></h3>
+	<h3 id="fieldState"></h3>
+</div>
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function (){
+	$("form").submit(function(event){
+		event.preventDefault();
+
+		var values = $(this).serialize();
+		var posting = $.post("/events", values);
+
+		posting.done(function(data){
+			var eventDetails = data["event"]
+			$("#eventName").text(eventDetails["name"]);
+			$("#eventDescription").text(eventDetails["description"]);
+		});
+	});
+});
+</script>

@@ -8,6 +8,10 @@ class EventsController < ApplicationController
 			redirect_to new_user_session_path
 		else
 			@events = Event.all
+			respond_to do |format|
+				format.html {render :index}
+				format.json {render json: @events}
+			end
 		end
 	end
 
@@ -21,7 +25,7 @@ class EventsController < ApplicationController
 		if @event.valid?
 			@event.user_id = current_user.id
 			@event.save
-			redirect_to events_path
+			render json: @event, status: 201
 		else
 			flash[:alert] = "Description too short!"
 			redirect_to new_event_path
