@@ -1,13 +1,47 @@
 <div class="containter">
   <div class="col-md-4">
-	<h3>Add a comment to <%= @event.name %></h3>
+	<h3 >Add a comment to <%= @event.name %></h3>
 
 	<%= form_for([@event, @event.comments.build]) do |f| %>
-		<%= f.label :content %>
-		<br>
-		<p><%= f.text_area :content %></p>
-		<br>
-		<%= f.submit %>
+    <div class="field">
+      <%= f.label :content %>
+    </div>
+
+		<div class="field">
+		  <p><%= f.text_area :content %></p>
+		</div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 	<% end %>
 	</div>
 </div>
+<br>
+<div class="col-md-4">
+  <%= link_to "Back", event_comments_path(@event) %>
+</div>
+
+
+<div class="col-md-4">
+	<h3 id="contentBody"></h3>
+</div>
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function (){
+	$("form").submit(function(event){
+    event.preventDefault();
+
+		var values = $(this).serialize();
+    var id = <%= @event.id %>
+		var posting = $.post("/events/" + id + "/comments", values);
+
+		posting.done(function(data){
+      var comment = data["content"]
+
+      $("#contentBody").text(comment);
+		});
+	});
+});
+</script>

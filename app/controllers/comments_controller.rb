@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 	def create
 		@event = Event.find(params[:event_id])
 		@comment = create_comment
-		redirect_to event_comments_path(@event)
+		render json: @comment, status: 201
 	end
 
 	def update

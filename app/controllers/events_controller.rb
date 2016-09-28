@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 		if @event.valid?
 			@event.user_id = current_user.id
 			@event.save
-			render json: @event, status: 201
+			redirect_to events_path
 		else
 			flash[:alert] = "Description too short!"
 			redirect_to new_event_path
